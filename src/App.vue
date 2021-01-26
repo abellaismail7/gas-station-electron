@@ -18,7 +18,7 @@
 						</router-link>
 					</a-menu-item>
 					<a-menu-item key="2">
-						<router-link to="/user">
+						<router-link to="/users">
 							<AIcon type="user" /><span>Users</span>
 						</router-link>
 					</a-menu-item>
