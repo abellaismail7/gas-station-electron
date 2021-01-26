@@ -1,17 +1,16 @@
 <template>
-	<Modal
-		title="Title"
-		:visible="visible"
-		@ok="() => saveUser(user)"
-		@cancel="() => toggle(false)"
-	>
-		<AForm class="userform">
+	<Modal title="Title" :visible="visible">
+		<AForm class="userform" @submit="validate">
 			<AFormItem label="Name">
 				<AInput placeholder="Name" v-model="user.name" />
 			</AFormItem>
-			<AFormItem :wrapper-col="{ offset: 16 }">
-				<AButton type="primary" @click="onSubmit"> Create </AButton>
-				<AButton style="margin-left: 10px"> Cancel </AButton>
+			<AFormItem :wrapper-col="{ offset: j }">
+				<AButton type="primary" @click="validate()">
+					{{ user.id ? "Update" : "Create" }}
+				</AButton>
+				<AButton style="margin-left: 10px" @click="toggle(false)">
+					Cancel
+				</AButton>
 			</AFormItem>
 		</AForm>
 	</Modal>
@@ -35,5 +34,10 @@ export default class User extends Vue {
 	@Prop(Object) readonly user!: UserI;
 
 	confirmLoading = false;
+
+	validate(e: Event) {
+		if (e) e.preventDefault();
+		this.saveUser(this.user);
+	}
 }
 </script>

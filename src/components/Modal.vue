@@ -48,6 +48,7 @@ export default class User extends Vue {
         text-align: center
         font-weight: 900
         color: #fff
+        background: #00000047
         border: 2px solid #fff
         padding: 2px 20px
         position: absolute

@@ -48,7 +48,7 @@
 		</ATabs>
 
 		<UserForm
-			:visible="true"
+			:visible="visible"
 			:toggle="toggle"
 			:user="selectedUser"
 			:saveUser="saveUser"
@@ -99,6 +99,7 @@ export default class Home extends Vue {
 		else this.$message.error("Error:can't add user");
 	}
 	async updateUser(_user: UserI) {
+		console.log(_user);
 		const res = await this.userdb.update(_user);
 		if (res) this.$message.success(`${_user.name} updated successfully`);
 		else this.$message.error("Error:can't update user");
@@ -107,7 +108,6 @@ export default class Home extends Vue {
 	async deluser() {
 		if (this.selectedUser) {
 			const res = await this.userdb.del(this.selectedUser);
-			console.log(res);
 		}
 	}
 	onSelect(_key: string[], _users: UserI[]) {
