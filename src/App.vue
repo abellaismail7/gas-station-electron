@@ -4,7 +4,7 @@
 			<a-layout-sider v-model="collapsed" collapsible>
 				<div class="logo">
 					<img src="./assets/bonfire.svg" width="50px" />
-					<h1 v-show="!collapsed">Gas Satation</h1>
+					<h1 v-bind:class="{ hide: collapsed }">Gas Satation</h1>
 				</div>
 				<a-menu
 					theme="dark"
@@ -70,4 +70,9 @@ export default {
         font-weight: 900
         text-align: center
         white-space: nowrap
+        opacity: 1
+        transition: opacity .5s
+
+h1.hide
+    opacity: 0
 </style>
